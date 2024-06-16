@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="display: flex;">
+<!-- Cuadrados de colores que cambiaran a negro -->
+<div style="width: 200px; height: 200px; background-color: blue;" id="1" ></div>
+
+<div style="width: 200px; height: 200px; background-color: red;" id="2" ></div>
+
+<div style="width: 200px; height: 200px; background-color: green;" id="3" ></div>
+
+<div style="width: 200px; height: 200px; background-color: yellow;" id="4" ></div>
+
+    <!-- Cuadrado para cambiar con teclas a, s, d -->
+
+<div id="key" style="width: 200px; height: 200px; background-color: white; border: 1px solid black;"></div>
+
+
+
+
+   <script>
+// Función para cambiar el color de los cuadros a negro al hacer click (ejercicio 1)
+function cambiarColor(event) {
+    event.target.style.backgroundColor = 'black';
+}
+
+// Obtener los divs y agregar el evento de clic
+document.getElementById('1').addEventListener('click', cambiarColor);
+document.getElementById('2').addEventListener('click', cambiarColor);
+document.getElementById('3').addEventListener('click', cambiarColor);
+document.getElementById('4').addEventListener('click', cambiarColor);
+
+// Variable global para guardar el color (ejercicio 2)
+let colorGlobal = '';
+
+// Función para cambiar el color del div "key"
+function ColorKeyDiv(color) {
+    const keyDiv = document.getElementById('key');
+    keyDiv.style.backgroundColor = color;
+}
+
+// Colocando el Evento al presionar una tecla
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'a') {
+        colorGlobal = 'pink';
+        ColorKeyDiv(colorGlobal);
+    } else if (event.key === 's') {
+        colorGlobal = 'orange';
+        ColorKeyDiv(colorGlobal);
+    } else if (event.key === 'd') {
+        colorGlobal = 'skyblue';
+        ColorKeyDiv(colorGlobal);
+    } else if (event.key === 'q') {
+        crearNuevoDiv('purple');
+    } else if (event.key === 'w') {
+        crearNuevoDiv('gray');
+    } else if (event.key === 'e') {
+        crearNuevoDiv('brown');
+    }
+});
+
+// Función para crear un nuevo div con un color específico: blanco, borde negro (ejercicio 3)
+
+function crearNuevoDiv(color) {
+    const nuevoDiv = document.createElement('div');
+    nuevoDiv.style.width = '200px';
+    nuevoDiv.style.height = '200px';
+    nuevoDiv.style.backgroundColor = color;
+    nuevoDiv.style.border = '1px solid black';
+    document.body.appendChild(nuevoDiv);
+}
+
+
+   </script>
+  </body>
+</html>
